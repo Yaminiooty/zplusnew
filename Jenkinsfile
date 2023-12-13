@@ -1,27 +1,18 @@
 pipeline {
+    agent any
 
-   agent any
-   
-     stages {
-      stage('Check Jenkins User') {
-          steps {
-                 sh 'whoami'
+    stages {
+        stage('Checkout and Run Docker') {
+            steps {
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: 'develop']], userRemoteConfigs: [[url: 'https://github.com/Yaminiooty/zplusnew.git']]])
+                    sh '''
+                        cd zplusnew
+                        pwd
+                        docker-compose up -d
+                    '''
                 }
             }
-
-       stage('checkout') {
-           steps {
-               sh '''
-               
-                cd /
-                git clone -b develop https://github.com/Yaminiooty/zplusnew.git 
-                chmod +x -R /zplusnew
-                cd zplusnew
-                pwd
-                docker-compose up -d
-                          '''   
-                  }
-           }
-       
-   }
-}  
+        }
+    }
+}
