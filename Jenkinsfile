@@ -6,7 +6,7 @@ pipeline {
        stage('checkout') {
            steps {
                sh '''
-                cd /
+                cd /home/rocky
                 git clone https://github.com/Yaminiooty/zplusnew.git 
                 cd zplusnew
                 pwd
