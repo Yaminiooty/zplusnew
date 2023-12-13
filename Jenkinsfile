@@ -7,8 +7,8 @@ pipeline {
            steps {
                sh '''
                 cd /
-                git clone https://github.com/Yaminiooty/U2L.git 
-                cd U2L
+                git clone https://github.com/Yaminiooty/zplusnew.git 
+                cd zplusnew
                 pwd
                 docker-compose up -d
                           '''   
