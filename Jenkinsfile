@@ -14,7 +14,7 @@ pipeline {
                sh '''
                
                 cd /
-                git clone https://github.com/Yaminiooty/zplusnew.git 
+                git clone -b develop https://github.com/Yaminiooty/zplusnew.git 
                 chmod +x -R /zplusnew
                 cd zplusnew
                 pwd
