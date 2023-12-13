@@ -1,0 +1,14 @@
+*.pyc
+venv
+Docs
+inputs/*
+results/Nmap/*
+results/OWASPDependencyCheck/*
+results/OWASP_Zap/*
+results/*
+.vscode*/*
+app.log
+openvas_socket*/*
+security_tool_volume/*
+
+

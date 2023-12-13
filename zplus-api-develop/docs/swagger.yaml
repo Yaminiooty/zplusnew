@@ -1,0 +1,1276 @@
+definitions:
+  dto.CreteNewUserDTO:
+    properties:
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      termsAcceptanceStatus:
+        type: boolean
+    required:
+    - email
+    - name
+    - password
+    - phone
+    - termsAcceptanceStatus
+    type: object
+  dto.GetVerificationCodeDTO:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  dto.ResetPasswordDTO:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  dto.SelectedToolsDTO:
+    properties:
+      email:
+        type: string
+      tool_ids:
+        items:
+          type: string
+        type: array
+    required:
+    - tool_ids
+    type: object
+  dto.UpdatePasswordDTO:
+    properties:
+      password:
+        type: string
+      token:
+        type: string
+    required:
+    - password
+    - token
+    type: object
+  dto.UpdateUserDetails:
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+    type: object
+  dto.UserDTO:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  dto.VerifyAccountDTO:
+    properties:
+      code:
+        type: integer
+      email:
+        type: string
+    required:
+    - code
+    - email
+    type: object
+  dto_tool_configuration.MetasploitConfigurationDTO:
+    properties:
+      additional_comments:
+        type: string
+      advanced_options:
+        type: boolean
+      module_data: {}
+      module_fullname:
+        type: string
+      module_type:
+        enum:
+        - auxiliary
+        - encoder
+        - evasion
+        - exploit
+        - nop
+        - payload
+        - post
+        type: string
+      use_default_values:
+        type: boolean
+    required:
+    - module_data
+    - module_fullname
+    - module_type
+    type: object
+  dto_tool_configuration.NmapConfigurationDTO:
+    properties:
+      aggressive_scan:
+        type: boolean
+      default_nse_scripts:
+        type: boolean
+      fragment_packets:
+        type: boolean
+      max_retries:
+        type: string
+      max_round_trip_timeout:
+        type: string
+      output_format:
+        enum:
+        - XML
+        - Normal
+        - Grepable
+        type: string
+      port:
+        type: string
+      scan_all_ports:
+        type: boolean
+      scan_timing:
+        enum:
+        - Slowest
+        - Slow
+        - Normal
+        - Fast
+        - Fastest
+        type: string
+      scan_type:
+        enum:
+        - SYN Scan
+        - TCP Connect Scan
+        - UDP Scan
+        - Comprehensive Scan
+        type: string
+      script_scan:
+        enum:
+        - ""
+        - None
+        - Vulnerability Scripts
+        - Default Scripts
+        - Custom Scripts
+        type: string
+      service_version_probe:
+        type: boolean
+      show_port_state_reason:
+        type: boolean
+      target:
+        type: string
+      traceroute:
+        type: boolean
+      version_detection_intensity:
+        enum:
+        - ""
+        - Low
+        - Medium
+        - High
+        type: string
+    required:
+    - output_format
+    - port
+    - scan_timing
+    - scan_type
+    - target
+    type: object
+  dto_tool_configuration.OpenVASConfigurationDTO:
+    properties:
+      additional_comments:
+        type: string
+      no_of_concurrent_nvt_per_host:
+        type: integer
+      no_of_concurrent_scanned_host:
+        type: integer
+      port_range:
+        $ref: '#/definitions/dto_tool_configuration.PortRange'
+      report_format:
+        enum:
+        - XML
+        - PDF
+        - TEXT
+        type: string
+      scan_config:
+        enum:
+        - Base
+        - Discovery
+        - empty
+        - Full and fast
+        - Host Discovery
+        - Log4Shell
+        - System Discovery
+        type: string
+      scanner_type:
+        enum:
+        - OpenVAS Default
+        - CVE
+        type: string
+      target:
+        items:
+          type: string
+        type: array
+    required:
+    - no_of_concurrent_nvt_per_host
+    - no_of_concurrent_scanned_host
+    - port_range
+    - report_format
+    - scan_config
+    - scanner_type
+    - target
+    type: object
+  dto_tool_configuration.PortRange:
+    properties:
+      tcp:
+        items:
+          type: string
+        type: array
+      udp:
+        items:
+          type: string
+        type: array
+    required:
+    - tcp
+    - udp
+    type: object
+  dto_tool_configuration.SQLMapConfigurationDTO:
+    properties:
+      additional_comments:
+        type: string
+      check_for_additional_urls:
+        type: boolean
+      cookies:
+        type: string
+      current_database:
+        type: boolean
+      current_session_user:
+        type: boolean
+      data:
+        type: string
+      enumerate_columns:
+        type: boolean
+      enumerate_databases:
+        type: boolean
+      enumerate_passwords:
+        type: boolean
+      enumerate_privileges:
+        type: boolean
+      enumerate_roles:
+        type: boolean
+      enumerate_schemas:
+        type: boolean
+      enumerate_tables:
+        type: boolean
+      enumerate_users:
+        type: boolean
+      exclude_system_databases:
+        type: boolean
+      headers:
+        type: string
+      number_of_threads:
+        enum:
+        - Low
+        - Medium
+        - High
+        type: string
+      report_format:
+        enum:
+        - PDF
+        - TXT
+        type: string
+      target:
+        type: string
+      test_forms:
+        type: boolean
+      testing_level:
+        enum:
+        - Level 1
+        - Level 2
+        - Level 3
+        - Level 4
+        - Level 5
+        type: string
+      testing_mode:
+        enum:
+        - Automatic
+        - Manual
+        type: string
+      user_agent:
+        type: string
+      verbosity_level:
+        enum:
+        - Level 0
+        - Level 1
+        - Level 2
+        - Level 3
+        - Level 4
+        - Level 5
+        - Level 6
+        type: string
+    required:
+    - number_of_threads
+    - report_format
+    - target
+    - testing_level
+    - testing_mode
+    - verbosity_level
+    type: object
+  dto_tool_configuration_zap.OWASPZAPConfigurationDTO:
+    properties:
+      additional_comments:
+        type: string
+      attack_mode:
+        enum:
+        - Safe Mode
+        - Standard Mode
+        - Protected Mode
+        - Attack Mode
+        type: string
+      authentication:
+        type: boolean
+      logged_in_indicator:
+        type: string
+      login_url:
+        type: string
+      password:
+        type: string
+      password_parameter:
+        type: string
+      policy_template:
+        enum:
+        - Low
+        - Medium
+        - High
+        type: string
+      report_format:
+        enum:
+        - PDF
+        - HTML
+        type: string
+      scan_type:
+        enum:
+        - Passive Scan
+        - Active Scan
+        type: string
+      spider_type:
+        enum:
+        - Traditional Spider
+        - Ajax Spider
+        type: string
+      target:
+        type: string
+      traditional_spider_options:
+        $ref: '#/definitions/dto_tool_configuration_zap.TraditionalSPiderOptions'
+      username:
+        type: string
+      username_parameter:
+        type: string
+    required:
+    - attack_mode
+    - policy_template
+    - report_format
+    - scan_type
+    - target
+    type: object
+  dto_tool_configuration_zap.TraditionalSPiderOptions:
+    properties:
+      max_children:
+        type: integer
+      recurse:
+        type: boolean
+      sub_tree_only:
+        type: boolean
+    type: object
+  multipart.FileHeader:
+    properties:
+      filename:
+        type: string
+      header:
+        $ref: '#/definitions/textproto.MIMEHeader'
+      size:
+        type: integer
+    type: object
+  textproto.MIMEHeader:
+    additionalProperties:
+      items:
+        type: string
+      type: array
+    type: object
+  utils.ApiResponse:
+    properties:
+      data: {}
+      error: {}
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API application for zplus security tool.
+  title: Zplus Backend API
+  version: "1.0"
+paths:
+  /access_token:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: request new access token.
+      tags:
+      - User
+  /action-pipeline-status/{pipeline_id}:
+    get:
+      parameters:
+      - description: ' '
+        in: path
+        name: pipeline_id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Get the status of tools in given pipeline
+      tags:
+      - Action Pipeline
+  /change-password:
+    patch:
+      parameters:
+      - description: ' '
+        in: body
+        name: update_user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateUserDetails'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: update the user password.
+      tags:
+      - User
+  /create-pipeline:
+    post:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Create a pipeline for currently selected tools
+      tags:
+      - Action Pipeline
+  /download-result-file:
+    post:
+      parameters:
+      - description: ' '
+        in: query
+        name: fileType
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Download the result file
+      tags:
+      - Action Pipeline
+  /download-tool-generated-result-file:
+    get:
+      parameters:
+      - description: ' '
+        in: query
+        name: pipeline_id
+        required: true
+        type: string
+      - description: ' '
+        in: query
+        name: tool_name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: get the Tool generated report files
+      tags:
+      - Action Pipeline
+  /email-result-file:
+    post:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Email the generated result file
+      tags:
+      - Action Pipeline
+  /get-available-result:
+    get:
+      parameters:
+      - description: ' '
+        in: query
+        name: pipeline_id
+        required: true
+        type: string
+      - description: ' '
+        in: query
+        name: tool_name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Get the result of the given tool and pipeline
+      tags:
+      - Action Pipeline
+  /get_current_pipeline_configurations:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Get all the current tool configurations
+      tags:
+      - User Tool Configuration
+  /get_verification_code:
+    post:
+      parameters:
+      - description: ' '
+        in: body
+        name: verification_code
+        required: true
+        schema:
+          $ref: '#/definitions/dto.GetVerificationCodeDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      summary: Get verfication code on email.
+      tags:
+      - User
+  /login:
+    post:
+      parameters:
+      - description: ' '
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UserDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      summary: User Login
+      tags:
+      - User
+  /logout:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Logout the user.
+      tags:
+      - User
+  /metasploit_helper/options:
+    post:
+      parameters:
+      - description: ' '
+        in: query
+        name: module_type
+        required: true
+        type: string
+      - description: ' '
+        in: query
+        name: module_name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Metasploit helper for options
+      tags:
+      - User Tool Configuration
+  /metasploit_helper/search:
+    post:
+      parameters:
+      - description: ' '
+        in: query
+        name: search_field
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Metasploit helper for search
+      tags:
+      - User Tool Configuration
+  /reset_password:
+    post:
+      parameters:
+      - description: ' '
+        in: body
+        name: reset_password
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ResetPasswordDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      summary: Resetting the password when the user selects forget the password.
+      tags:
+      - User
+  /run-pipeline:
+    post:
+      parameters:
+      - description: ' '
+        in: query
+        name: pipeline_id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: start the created pipeline
+      tags:
+      - Action Pipeline
+  /save_tool_configuration/JMeterLoadTesting:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - in: formData
+        name: additional_comments
+        type: string
+      - in: formData
+        name: loop_count
+        required: true
+        type: string
+      - in: formData
+        name: loop_count_udf
+        required: true
+        type: string
+      - in: formData
+        name: number_of_threads
+        required: true
+        type: string
+      - in: formData
+        name: number_of_threads_udf
+        required: true
+        type: string
+      - in: formData
+        name: ramp_up_period
+        required: true
+        type: string
+      - in: formData
+        name: ramp_up_period_udf
+        required: true
+        type: string
+      - enum:
+        - PDF
+        - HTML
+        in: formData
+        name: report_format
+        required: true
+        type: string
+      - in: formData
+        name: test_duration
+        required: true
+        type: string
+      - in: formData
+        name: test_duration_udf
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Save / Update the tool configuration
+      tags:
+      - User Tool Configuration
+  /save_tool_configuration/Metasploit:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ' '
+        in: body
+        name: Metasploit
+        required: true
+        schema:
+          $ref: '#/definitions/dto_tool_configuration.MetasploitConfigurationDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Save / Update the tool configuration
+      tags:
+      - User Tool Configuration
+  /save_tool_configuration/Nmap:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ' '
+        in: body
+        name: Nmap
+        required: true
+        schema:
+          $ref: '#/definitions/dto_tool_configuration.NmapConfigurationDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Save / Update the tool configuration
+      tags:
+      - User Tool Configuration
+  /save_tool_configuration/OWASPDependencyCheckDTO:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - in: formData
+        name: additional_comments
+        type: string
+      - enum:
+        - HTML
+        - JSON
+        - XML
+        in: formData
+        name: output_format
+        required: true
+        type: string
+      - in: formData
+        name: scan_dependencies
+        type: boolean
+      - in: formData
+        name: scan_dev_dependencies
+        type: boolean
+      - in: formData
+        name: suppress_cve_reports
+        type: boolean
+      - in: formData
+        name: suppress_update_check
+        type: boolean
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Save / Update the tool configuration
+      tags:
+      - User Tool Configuration
+  /save_tool_configuration/OWASPZAP:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ' '
+        in: body
+        name: Owasp_zap
+        required: true
+        schema:
+          $ref: '#/definitions/dto_tool_configuration_zap.OWASPZAPConfigurationDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Save / Update the tool configuration
+      tags:
+      - User Tool Configuration
+  /save_tool_configuration/OpenVAS:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ' '
+        in: body
+        name: OpenVas
+        required: true
+        schema:
+          $ref: '#/definitions/dto_tool_configuration.OpenVASConfigurationDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Save / Update the tool configuration
+      tags:
+      - User Tool Configuration
+  /save_tool_configuration/SQLMap:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ' '
+        in: body
+        name: SQLMap
+        required: true
+        schema:
+          $ref: '#/definitions/dto_tool_configuration.SQLMapConfigurationDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Save / Update the tool configuration
+      tags:
+      - User Tool Configuration
+  /select-tools:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Get the selected tools for the current session
+      tags:
+      - Tool Selection
+    post:
+      parameters:
+      - description: ' '
+        in: body
+        name: select_tools
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SelectedToolsDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Select the tools for the current user session
+      tags:
+      - Tool Selection
+  /tools:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Get all the enabled tools.
+      tags:
+      - Tool Selection
+  /update_password:
+    patch:
+      parameters:
+      - description: ' '
+        in: body
+        name: update_password
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdatePasswordDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      summary: Updates the user password. Used internally by the reset password functionality.
+      tags:
+      - User
+  /update_user_details:
+    patch:
+      parameters:
+      - description: ' '
+        in: body
+        name: update_user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateUserDetails'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Update the name and phone of the user.
+      tags:
+      - User
+  /user:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Get logged in user details.
+      tags:
+      - User
+  /users:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: List of all registered users
+      tags:
+      - User
+    post:
+      parameters:
+      - description: ' '
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreteNewUserDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      summary: Register User
+      tags:
+      - User
+  /users/{id}:
+    delete:
+      parameters:
+      - description: ' '
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Delete User By Id
+      tags:
+      - User
+    get:
+      parameters:
+      - description: ' '
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      security:
+      - Bearer: []
+      summary: Find User By Id
+      tags:
+      - User
+  /verify_account:
+    post:
+      parameters:
+      - description: ' '
+        in: body
+        name: verify_account
+        required: true
+        schema:
+          $ref: '#/definitions/dto.VerifyAccountDTO'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.ApiResponse'
+      summary: Account verification post registration.
+      tags:
+      - User
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
