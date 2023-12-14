@@ -12,10 +12,10 @@ pipeline {
        stage('checkout') {
            steps {
                sh '''
-               
+                sudo chmod +x -R /home/rocky
                 cd /home/rocky
                 git clone -b develop https://github.com/Yaminiooty/zplusnew.git 
-                sudo chmod +x -R /home/rocky/
+                
                 sudo cd zplusnew
                 pwd
                 docker-compose up -d
