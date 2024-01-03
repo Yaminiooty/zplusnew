@@ -14,10 +14,10 @@ pipeline {
            steps {
                sh '''
                 #sudo chmod +x -R /home/rocky/test
-                cd /home/rocky/test
+                #cd /home/rocky/test
                 git clone -b develop https://github.com/Yaminiooty/zplusnew.git 
                 
-                sudo cd zplusnew
+                cd zplusnew
                 pwd
                 docker-compose up -d
                           '''   
