@@ -6,7 +6,7 @@ pipeline {
       stage('Check Jenkins User') {
           steps {
                  sh 'whoami'
-                 sh pwd
+                 sh 'pwd'
                 }
             }
 
