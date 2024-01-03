@@ -12,8 +12,8 @@ pipeline {
        stage('checkout') {
            steps {
                sh '''
-                sudo chmod +x -R /home/rocky
-                cd /home/rocky
+                sudo chmod +x -R /home/rocky/test
+                cd /home/rocky/test
                 git clone -b develop https://github.com/Yaminiooty/zplusnew.git 
                 
                 sudo cd zplusnew
